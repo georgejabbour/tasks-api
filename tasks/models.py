@@ -54,3 +54,32 @@ class Session(models.Model):
     class Meta:
         db_table = 'sessions'
         managed = True
+
+class Task(models.Model):
+    status_choices = [
+        ('open', 'Open'),
+        ('active', 'Active'),
+        ('completed', 'Completed'),
+        ('deferred', 'Deferred'),
+        ('deleted', 'Deleted'),
+    ]
+
+    type_choices = [
+        ('task', 'Task'),
+        ('note', 'Note'),
+        ('grocery', 'Grocery'),
+    ]
+
+    id = models.AutoField(primary_key=True)
+    userId = models.IntegerField(null=False)
+    title = models.CharField(max_length=255, null=False)
+    description = models.TextField(null=True)
+    status = models.CharField(max_length=255, null=False, choices=status_choices)
+    dueDate = models.DateTimeField(null=True)
+    completedDate = models.DateTimeField(null=True)
+    type = models.CharField(max_length=255, null=False, choices=type_choices)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
+
+    class Meta:
+        db_table = 'tasks'
+        managed = True
