@@ -1,12 +1,16 @@
 from django.db import models
 from uuid import uuid4
+from django.contrib.auth.models import AbstractBaseUser
 
-class User(models.Model):
+class User(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
     email = models.EmailField(unique=True, null=True)
     emailVerified = models.DateTimeField(null=True)
     image = models.TextField(null=True)
+
+    REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'email'
 
     class Meta:
         db_table = 'users'
@@ -54,6 +58,7 @@ class Session(models.Model):
     class Meta:
         db_table = 'sessions'
         managed = True
+        ordering = ['-id']
 
 class Task(models.Model):
     status_choices = [
