@@ -61,28 +61,15 @@ class Session(models.Model):
         ordering = ['-id']
 
 class Task(models.Model):
-    status_choices = [
-        ('open', 'Open'),
-        ('active', 'Active'),
-        ('completed', 'Completed'),
-        ('deferred', 'Deferred'),
-        ('deleted', 'Deleted'),
-    ]
-
-    type_choices = [
-        ('task', 'Task'),
-        ('note', 'Note'),
-        ('grocery', 'Grocery'),
-    ]
 
     id = models.AutoField(primary_key=True)
     userId = models.IntegerField(null=False)
     title = models.CharField(max_length=255, null=False)
     description = models.TextField(null=True)
-    status = models.CharField(max_length=255, null=False, choices=status_choices)
+    status = models.CharField(max_length=255, null=False)
     dueDate = models.DateTimeField(null=True)
     completedDate = models.DateTimeField(null=True)
-    type = models.CharField(max_length=255, null=False, choices=type_choices)
+    type = models.CharField(max_length=255, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
 
     class Meta:
