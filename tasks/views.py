@@ -23,7 +23,7 @@ def get_user_by_session_token(session_token):
 class ExchangeTokenView(APIView):
     def post(self, request):
         session_token = request.data.get('session_token')
-        print('session_token', session_token)
+        print('session_token ExchangeTokenView', session_token)
         if not session_token:
             return Response({"error": "Session token is required"}, status=status.HTTP_400_BAD_REQUEST)
 

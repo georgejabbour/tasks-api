@@ -42,11 +42,13 @@ class SessionTokenAuthentication(BaseBackend):
             return user, None
 
         except Session.DoesNotExist:
+            print('Session.DoesNotExist')
             raise PermissionDenied("Invalid session token, Session.DoesNotExist")
         except User.DoesNotExist:
+            print('User.DoesNotExist')
             raise PermissionDenied("User does not exist")
 
-        return None
+        return None, None
 
     def get_user(self, user_id):
         try:
