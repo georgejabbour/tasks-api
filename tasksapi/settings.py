@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-rc^*w^w&6g9_(uvx#6s*bnt!w)l0rdi%!l7mv#y%uc&x%wo5pk
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'https://jabour-tasks.vercel.app/']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -23,7 +23,7 @@ CORS_ALLOW_HEADERS = [
     'client-id'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://jabour-tasks.vercel.app/']
 
 CORS_ALLOW_METHODS = [
     "DELETE",
