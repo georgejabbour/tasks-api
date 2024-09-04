@@ -1,11 +1,8 @@
 # tasks/authentication.py
 from django.contrib.auth.backends import BaseBackend
-from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.core.exceptions import PermissionDenied
-from .models import Session
-
-User = get_user_model()
+from .models import Session, User
 
 class SessionTokenAuthentication(BaseBackend):
     def authenticate(self, request):

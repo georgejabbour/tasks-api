@@ -2,8 +2,18 @@ from datetime import timedelta
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import environ
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
+
+env = environ.Env(DEBUG=(bool, False))
+env_file = os.path.join(BASE_DIR, ".env")
+ON_RAILWAY = env('ON_RAILWAY', default=False)
+if not ON_RAILWAY and os.path.isfile(env_file):
+    env.read_env(env_file)
+ENV_ROLE = os.getenv('ENV_ROLE', default='local')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,7 +22,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', 
+    'localhost',
     'https://jabbour-tasks.vercel.app/',
     'jabbour-tasks.vercel.app',
     'https://django-server-production-155b.up.railway.app/',
@@ -33,7 +43,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000', 
+    'http://localhost:3000',
     'https://jabbour-tasks.vercel.app/',
     'https://django-server-production-155b.up.railway.app/'
 ]
@@ -110,14 +120,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tasksapi.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("DATABASE_NAME"),
-        'USER': os.environ.get("DATABASE_User"),
-        'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
-        'HOST': os.environ.get("DATABASE_HOST"),
-        'PORT': os.environ.get("DATABASE_PORT"),
-    }
+    'default': env.db('DATABASE_URL')
 }
 
 AUTH_PASSWORD_VALIDATORS = [
