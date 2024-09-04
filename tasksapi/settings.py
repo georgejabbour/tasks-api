@@ -11,7 +11,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'https://jabour-tasks.vercel.app/', 'https://django-server-production-155b.up.railway.app/']
+ALLOWED_HOSTS = ['localhost', 'https://jabbour-tasks.vercel.app/', 'https://django-server-production-155b.up.railway.app/']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -26,7 +26,7 @@ CORS_ALLOW_HEADERS = [
     'client-id'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://jabour-tasks.vercel.app/', 'https://django-server-production-155b.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://jabbour-tasks.vercel.app/', 'https://django-server-production-155b.up.railway.app/']
 
 CORS_ALLOW_METHODS = [
     "DELETE",
