@@ -1,3 +1,3 @@
-## Django Template
+Goes with [jabbour-tasks](https://github.com/georgejabbour/jabbour-tasks)
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/GB6Eki?referralCode=U5zXSw)
+Deployed on Railway
