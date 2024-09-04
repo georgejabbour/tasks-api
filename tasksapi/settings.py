@@ -11,7 +11,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'https://jabbour-tasks.vercel.app/', 'https://django-server-production-155b.up.railway.app/']
+ALLOWED_HOSTS = [
+    'localhost', 
+    'https://jabbour-tasks.vercel.app/',
+    'jabbour-tasks.vercel.app',
+    'https://django-server-production-155b.up.railway.app/',
+    'django-server-production-155b.up.railway.app'
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -26,7 +32,11 @@ CORS_ALLOW_HEADERS = [
     'client-id'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://jabbour-tasks.vercel.app/', 'https://django-server-production-155b.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000', 
+    'https://jabbour-tasks.vercel.app/',
+    'https://django-server-production-155b.up.railway.app/'
+]
 
 CORS_ALLOW_METHODS = [
     "DELETE",
@@ -63,7 +73,8 @@ AUTH_USER_MODEL = 'tasks.User'
 
 AUTHENTICATION_BACKENDS = [
     'tasks.authentication.SessionTokenAuthentication',
-    'django.contrib.auth.backends.ModelBackend',  # Keep the default model backend for admin access
+    # Keep the default model backend for admin access
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
